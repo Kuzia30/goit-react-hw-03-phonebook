@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Filter = ({ handleChange, filter }) => {
   return (
     <label>
@@ -8,3 +10,8 @@ const Filter = ({ handleChange, filter }) => {
 };
 
 export default Filter;
+
+Filter.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
+};
