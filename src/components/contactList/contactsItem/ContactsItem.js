@@ -1,4 +1,5 @@
 import phoneBookContext from "../../../context/phoneBookContext";
+import { Item, Button } from "./ContactItem.styled";
 
 const ContacsItem = () => {
   return (
@@ -9,14 +10,14 @@ const ContacsItem = () => {
           contact.name.toLowerCase().includes(normalazedFilter)
         );
         return visibleContacts.map(({ id, name, number }) => (
-          <li key={id}>
+          <Item key={id}>
             <p>
               {name} : {number}
             </p>
-            <button type="button" onClick={() => onDeleteName(id)}>
+            <Button type="button" onClick={() => onDeleteName(id)}>
               Delete
-            </button>
-          </li>
+            </Button>
+          </Item>
         ));
       }}
     </phoneBookContext.Consumer>

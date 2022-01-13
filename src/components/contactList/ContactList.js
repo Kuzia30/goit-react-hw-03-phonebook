@@ -1,10 +1,11 @@
 import ContacsItem from "./contactsItem";
+import { List } from "./ContactList.styled";
 
 const ContactList = () => {
   return (
-    <ul>
+    <List>
       <ContacsItem />
-    </ul>
+    </List>
   );
 };
 

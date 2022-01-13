@@ -6,6 +6,8 @@ import ContactForm from "./components/contactForm";
 import Filter from "./components/filter";
 import ContactList from "./components/contactList";
 
+import { MainTitle, SecondaryTitle, PhonebookWrap } from "./App.styled";
+
 class App extends Component {
   state = {
     contacts: [
@@ -51,13 +53,13 @@ class App extends Component {
           onDeleteName: this.deleteName,
         }}
       >
-        <div>
-          <h1>Phonebook</h1>
+        <PhonebookWrap>
+          <MainTitle>Phonebook</MainTitle>
           <ContactForm submitForm={this.getSubmitForm} />
-          <h2>Contacts</h2>
+          <SecondaryTitle>Contacts</SecondaryTitle>
           <Filter handleChange={this.handleChange} filter={this.state.filter} />
           <ContactList />
-        </div>
+        </PhonebookWrap>
       </phoneBookContext.Provider>
     );
   }
