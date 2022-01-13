@@ -3,15 +3,19 @@ import phoneBookContext from "../../../context/phoneBookContext";
 const ContacsItem = () => {
   return (
     <phoneBookContext.Consumer>
-      {(data) => {
-        const normalazedFilter = data.filter.toLowerCase();
-        const visibleContacts = data.contacts.filter((contact) =>
+      {({ filter, contacts, onDeleteName }) => {
+        const normalazedFilter = filter.toLowerCase();
+        const visibleContacts = contacts.filter((contact) =>
           contact.name.toLowerCase().includes(normalazedFilter)
         );
-
-        return visibleContacts.map((contact) => (
-          <li key={contact.id}>
-            {contact.name} : {contact.number}
+        return visibleContacts.map(({ id, name, number }) => (
+          <li key={id}>
+            <p>
+              {name} : {number}
+            </p>
+            <button type="button" onClick={() => onDeleteName(id)}>
+              Delete
+            </button>
           </li>
         ));
       }}

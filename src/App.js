@@ -21,26 +21,35 @@ class App extends Component {
     this.setState({ [evt.target.name]: evt.target.value });
   };
 
-  getSubmitForm = (data) => {
+  getSubmitForm = ({ name, number }) => {
+    const normalazedFind = name.toLowerCase();
+
     const isName = this.state.contacts.find(
-      (contact) => contact.name === data.name
+      (contact) => contact.name.toLowerCase() === normalazedFind
     );
     if (isName) {
-      return alert(`${isName.name} is already in contacts.`);
+      return alert(`${name} is already in contacts.`);
     }
 
     this.setState((prevstate) => ({
-      contacts: [
-        { name: data.name, number: data.number, id: nanoid(5) },
-        ...prevstate.contacts,
-      ],
+      contacts: [{ name, number, id: nanoid(5) }, ...prevstate.contacts],
+    }));
+  };
+
+  deleteName = (id) => {
+    this.setState((prevstate) => ({
+      contacts: prevstate.contacts.filter((contact) => contact.id !== id),
     }));
   };
 
   render() {
     return (
       <phoneBookContext.Provider
-        value={{ contacts: this.state.contacts, filter: this.state.filter }}
+        value={{
+          contacts: this.state.contacts,
+          filter: this.state.filter,
+          onDeleteName: this.deleteName,
+        }}
       >
         <div>
           <h1>Phonebook</h1>
