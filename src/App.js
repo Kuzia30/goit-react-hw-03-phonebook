@@ -6,7 +6,12 @@ import ContactForm from "./components/contactForm";
 import Filter from "./components/filter";
 import ContactList from "./components/contactList";
 
-import { MainTitle, SecondaryTitle, PhonebookWrap } from "./App.styled";
+import {
+  GlobalStyle,
+  MainTitle,
+  SecondaryTitle,
+  PhonebookWrap,
+} from "./App.styled";
 
 class App extends Component {
   state = {
@@ -53,6 +58,7 @@ class App extends Component {
           onDeleteName: this.deleteName,
         }}
       >
+        <GlobalStyle />
         <PhonebookWrap>
           <MainTitle>Phonebook</MainTitle>
           <ContactForm submitForm={this.getSubmitForm} />
