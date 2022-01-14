@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
-import "./App.css";
 import phoneBookContext from "./context/phoneBookContext";
 import ContactForm from "./components/contactForm";
 import Filter from "./components/filter";
